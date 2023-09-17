@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Your first Spring + Thymeleaf application</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<h1><span th:text="'Hola, ' + ${mensaje}"></span></h1>
+
+<form th:action="@{/hola}" method="get">
+  <div>
+    <label for="nombre">¿Como debería saludarte la aplicación?</label>
+    <input name="miNombre" id="nombre">
+    <button>Salúdame!</button>
+  </div>
+</form>
+</body>
+</html>
+
