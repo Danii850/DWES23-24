@@ -33,7 +33,7 @@ public class MainController {
     public String verMascota(Model model) {
         Mascota mascota = new Mascota ("Luci",
                 LocalDate.of(2021, 2, 14),
-                1424412L,
+                17342L,
                 TipoMascota.PERRO);
         model.addAttribute("mascota", mascota);
         return "mascota";
