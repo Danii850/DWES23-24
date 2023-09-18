@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:https="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contacto</title>
 </head>
 <body>
@@ -9,7 +11,10 @@
 
     <ul>
         <li>
-            <h1>GOL</h1>
+            <h3 th:text="${pais}"></h3>
+        </li>
+        <li>
+            <h3 th:text="${horario}"></h3>
         </li>
     </ul>
 
