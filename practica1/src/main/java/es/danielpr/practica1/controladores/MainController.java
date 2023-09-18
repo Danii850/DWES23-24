@@ -28,6 +28,7 @@ public class MainController {
         model.addAttribute("contacto", "Contacta con nosotros");
         model.addAttribute("horario", "Nuestro horario es de " + horario);
         model.addAttribute("pais", "Nuestros Call Centers se encuentran en " + pais);
+        model.addAttribute("telefono", "Llama al 1706");
         return "contacto";
     }
 }
