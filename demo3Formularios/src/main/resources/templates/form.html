@@ -6,7 +6,7 @@
 </head>
 <body>
 <form method="post" action="#"
-      th:action="${mascotaDto.id != null} ? @{/mascota/edit/submit : @{/mascota/new/submit}"
+      th:action="${mascotaDto.id != null} ? @{/mascota/edit/submit} : @{/mascota/new/submit}"
       th:object="${mascotaDto}">
     <h4 th:text="${mascotaDto.id != null} ? 'Editar mascota' : 'Nueva mascota'">Nueva mascota</h4>
     <div>
@@ -48,7 +48,7 @@
         <div>
             <select th:field="*{tipo}">
                 <option value="0">seleccione tipo mascota</option>
-                <option th:each="tipo : ${T(es.carlosgs.demo3formularios.entidades.TipoMascota).values()}"
+                <option th:each="tipo : ${T(es.danielpr.demo3formularios.entidades.TipoMascota).values()}"
                         th:value="${tipo}" th:text="${tipo}"></option>
             </select>
         </div>

@@ -13,12 +13,20 @@
         <module name="practica1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo3Formularios (1)" target="17" />
+      <module name="demo3Formularios (2)" target="17" />
+      <module name="demo4Formularios2" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo1HolaMundo" options="-parameters" />
       <module name="demo2Parametros" options="-parameters" />
       <module name="demo3Formularios" options="-parameters" />
+      <module name="demo3Formularios (1)" options="-parameters" />
+      <module name="demo3Formularios (2)" options="-parameters" />
+      <module name="demo4Formularios2" options="-parameters" />
       <module name="practica1" options="-parameters" />
     </option>
   </component>
