@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="#"
+      th:action="${mascotaDto.id != null} ? @{/mascota/edit/submit : @{/mascota/new/submit}"
+      th:object="${mascotaDto}">
+    <h4 th:text="${mascotaDto.id != null} ? 'Editar mascota' : 'Nueva mascota'">Nueva mascota</h4>
+    <div>
+        <div>
+            <label for="id" >Id</label>
+            <input type="number" id="id" placeholder="id" th:field="*{id}"
+                   th:attrappend="readonly=${mascotaDto.id != null} ? 'readonly' : null" />
+        </div>
+        <div>
+            <label for="nombre" >Nombre</label>
+            <input type="text" id="nombre" placeholder="Nombre" th:field="*{nombre}" />
+        </div>
+        <div>
+            <label for="fechaNac" >Fecha Nac.</label>
+            <input type="date" id="fechaNac" placeholder="Fecha nac." th:field="*{fechaNac}" />
+        </div>
+        <div>
+            <label for="numChip" >Núm chip</label>
+            <input type="text" id="numChip" placeholder="Núm Chip" th:field="*{numChip}" />
+        </div>
+        <!--    Versión sin radio button
+                <div>
+                    <label for="tipo" >Tipo</label>
+                    <input type="text" id="tipo" placeholder="Tipo" th:field="*{tipo}" />
+                </div>-->
+
+        <!-- versión con radiobutton para seleccionar mascota -->
+        <!--
+        <div th:each="tipo : ${T(es.carlosgs.demo3formularios.entidades.TipoMascota).values()}">
+            <div>
+                <input type="radio" th:field="*{tipo}" th:value="${tipo}" >
+                <label th:for="${#ids.prev('tipo')}"
+                       th:text="${tipo}">tipo mascota</label>
+            </div>
+        </div>
+        -->
+
+        <!-- versión con select -->
+        <div>
+            <select th:field="*{tipo}">
+                <option value="0">seleccione tipo mascota</option>
+                <option th:each="tipo : ${T(es.carlosgs.demo3formularios.entidades.TipoMascota).values()}"
+                        th:value="${tipo}" th:text="${tipo}"></option>
+            </select>
+        </div>
+
+
+
+
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+</body>
+</html>
