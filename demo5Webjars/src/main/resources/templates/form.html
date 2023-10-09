@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<form method="post" action="#"
+      th:action="${mascotaDto.id != null} ? @{/mascota/edit/submit} : @{/mascota/new/submit}"
+      th:object="${mascotaDto}">
+    <h4 th:text="${mascotaDto.id != null} ? 'Editar mascota' : 'Nueva mascota'">Nueva mascota</h4>
+    <div>
+        <div class="input-group mb-3">
+            <label class="form-label" for="id" >Id</label>
+            <input class="form-control" type="number" id="id" placeholder="id" th:field="*{id}"
+                   th:attrappend="readonly=${mascotaDto.id != null} ? 'readonly' : null" />
+        </div>
+        <div class="input-group mb-3">
+            <label class="form-label" for="nombre" >Nombre</label>
+            <input class="form-control" type="text" id="nombre" placeholder="Nombre" th:field="*{nombre}" />
+        </div>
+        <div class="input-group mb-3">
+            <label class="form-label" for="fechaNac" >Fecha Nac.</label>
+            <input class="form-control" type="date" id="fechaNac" placeholder="Fecha nac." th:field="*{fechaNacimiento}" />
+        </div>
+        <div class="input-group mb-3">
+            <label class="form-label" for="numChip" >Núm chip</label>
+            <input class="form-control" type="text" id="numChip" placeholder="Núm Chip" th:field="*{numChip}" />
+        </div>
+<!--    Versión sin radio button
+        <div>
+            <label for="tipo" >Tipo</label>
+            <input type="text" id="tipo" placeholder="Tipo" th:field="*{tipo}" />
+        </div>-->
+
+        <!-- versión con radiobutton para seleccionar mascota -->
+        <!--
+        <div th:each="tipo : ${T(es.carlosgs.demoentidades.TipoMascota).values()}">
+            <div>
+                <input type="radio" th:field="*{tipo}" th:value="${tipo}" >
+                <label th:for="${#ids.prev('tipo')}"
+                       th:text="${tipo}">tipo mascota</label>
+            </div>
+        </div>
+        -->
+
+        <!-- versión con select -->
+        <div>
+            <select th:field="*{tipo}">
+                <option value="0">seleccione tipo mascota</option>
+                <option th:each="tipo : ${T(es.danielpr.demo5webjars.entidades.TipoMascota).values()}"
+                         th:value="${tipo}" th:text="${tipo}"></option>
+            </select>
+        </div>
+
+        <div>
+            <input class="form-check-input mt-0" type="checkbox" id="vacunada" th:field="*{vacunada}">
+            <label class="form-label" for="vacunada">Está vacunada</label>
+        </div>
+
+
+
+
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

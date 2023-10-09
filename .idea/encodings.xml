@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/demo10ModalAjax/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo1HolaMundo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo2Parametros/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo3Formularios/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo4Formularios2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo5Webjars/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo6Validacion/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo7Internacional/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo8Modal/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo9Fragmentos/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practica1/src/main/java" charset="UTF-8" />
   </component>
 </project>

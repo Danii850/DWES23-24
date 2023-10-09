@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{webjars/font-awesome/css/css.all}">
+</head>
+
+
+<body>
+<div class="container-fluid">
+    <div class="card">
+        <h3>Lista de Mascotas</h3>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Núm Chip</th>
+                    <th>Tipo</th>
+                    <th>Vacunada</th>
+                    <th>Operaciones</th>
+                    <th><a th:href="@{/mascota/new}">Crear</a></th>
+                </thead>
+                <tbody>
+                <tr th:each="mascota : ${listaMascotas}">
+                    <td th:text="${mascota.id}">ID</td>
+                    <td th:text="${mascota.nombre}">Nombre</td>
+                    <td th:text="${mascota.fechaNacimiento}">Malu/td>
+                    <td th:text="${mascota.numChip}">00000</td>
+                    <td th:text="${mascota.tipo}">RATA</td>
+                    <td>
+                        <span th:if="${mascota.vacunada}" th:text="Sí">Sí</span>
+                        <span th:unless="${mascota.vacunada}" th:text="No">No</span>
+                    </td>
+                    <td><a th:href="@{/mascota/edit/{id}(id=${mascota.id})}">Editar</a>
+                        <a th:href="@{/mascota/delete/{id}(id=${mascota.id})}">Borrar</a>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

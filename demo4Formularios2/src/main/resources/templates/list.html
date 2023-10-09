@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table,th,td {
+            border:1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Fecha Nacimiento</th>
+        <th>Núm Chip</th>
+        <th>Tipo</th>
+        <th>Vacunada</th>
+        <th>Operaciones</th>
+    </thead>
+    <tbody>
+    <tr th:each="mascota : ${listaMascotas}">
+        <td th:text="${mascota.id}">ID</td>
+        <td th:text="${mascota.nombre}">Nombre</td>
+        <td th:text="${mascota.fechaNacimiento}">Malu/td>
+        <td th:text="${mascota.numChip}">00000</td>
+        <td th:text="${mascota.tipo}">RATA</td>
+        <td>
+            <span th:if="${mascota.vacunada}" th:text="Sí">Sí</span>
+            <span th:unless="${mascota.vacunada}" th:text="No">No</span>
+        </td>
+        <td><a th:href="@{/mascota/edit/{id}(id=${mascota.id})}">Editar</a>
+          <a th:href="@{/mascota/delete/{id}(id=${mascota.id})}">Borrar</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
