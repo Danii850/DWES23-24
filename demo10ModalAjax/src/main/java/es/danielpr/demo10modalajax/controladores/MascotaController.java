@@ -9,15 +9,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 // Para hacer logging
 @Slf4j
 // Si no queremos usar @Autowired usamos Lombok para inject
 @RequiredArgsConstructor
+@RequestMapping("mascota")
 @Controller
 public class MascotaController {
 
@@ -27,13 +25,13 @@ public class MascotaController {
 
 
 
-    @GetMapping({"/", "mascota/list"})
+    @GetMapping({"/", "/list"})
     public String listado(Model model) {
         model.addAttribute("listaMascotas", servicio.findAll() );
         return "list";
     }
 
-    @GetMapping("mascota/new")
+    @GetMapping("/new")
     public String nuevaMascota(Model model) {
         log.info("estoy en nuevaMascota");
 
@@ -42,7 +40,7 @@ public class MascotaController {
         return "form";
     }
 
-    @PostMapping("mascota/new/submit")
+    @PostMapping("/new/submit")
     //@ModelAtribute equivaldría a esto
     //public String nuevaMascotaSubmit(Mascota nuevaMascota, Model model) {
     //    Mascota nuevaMascota = model.getAttribute("mascotaDto");
@@ -61,7 +59,7 @@ public class MascotaController {
         }
     }
 
-    @GetMapping("/mascota/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editarMascotaForm(@PathVariable long id, Model model) {
 
         Mascota mascota = servicio.findById(id);
@@ -74,7 +72,7 @@ public class MascotaController {
         }
     }
 
-    @PostMapping("/mascota/edit/submit")
+    @PostMapping("/edit/submit")
     public String editarMascotaSubmit(@Valid @ModelAttribute("mascotaDto") Mascota mascota,
                                       BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -86,7 +84,7 @@ public class MascotaController {
         }
     }
 
-  @GetMapping("/mascota/delete/{id}")
+  @GetMapping("/delete/{id}")
   public String borrarMascota(@PathVariable("id") Long id, Model model) {
 
     Mascota mascota = servicio.findById(id);
@@ -96,23 +94,25 @@ public class MascotaController {
     return "redirect:/mascota/list";
   }
 
-  /*@GetMapping("mascota/delete/show/{id}")
+    @GetMapping("/delete/show/{id}")
     public String showModalBorrarMascota(@PathVariable("id") Long id, Model model) {
 
         Mascota mascota = servicio.findById(id);
         String deleteMessage = "";
-        if(mascota != null) {
-            deleteMessage = servicioInternacionalizacion.getMessage("mascota.borrar.mensaje"),
-                new Object[]{mascota.getNombre()} );
+        if (mascota != null)
+            deleteMessage = servicioInternacionalizacion.getMessage("mascota.borrar.mensaje",
+                    new Object[]{mascota.getNombre()} );
             //deleteMessage = "¿Confirma el borrado de la mascota " + mascota.getId() + " ?";
-
-        } else {
+        else
             return "redirect:/mascota/?error=true";
-        }
+
         model.addAttribute("delete_url", "/mascota/delete/" + id);
         model.addAttribute("delete_title",
-            servicioInternacionalizacion.getMessage("mascota.borrar.titulo");
+                servicioInternacionalizacion.getMessage("mascota.borrar.titulo")
+        //        "Borrar mascota"
+        );
+        model.addAttribute("delete_message", deleteMessage);
         return "fragmentos/delete-modal::modal-borrar";
+    }
 
-    }*/
 }

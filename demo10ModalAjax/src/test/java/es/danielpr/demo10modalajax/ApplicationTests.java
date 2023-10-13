@@ -1,4 +1,4 @@
-package es.carlosgs.demo;
+package es.danielpr.demo10modalajax;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -6,9 +6,9 @@
 </head>
 
 <body>
-<nav th:replace="fragmentos/navbar::navbar"></nav>
 
-</nav>
+<nav th:replace="fragmentos/barrasup::barra-superior"></nav>
+
 <form method="post" action="#"
       th:action="${modoEdicion} ? @{/mascota/edit/submit} : @{/mascota/new/submit}"
       th:object="${mascotaDto}">
@@ -62,7 +62,7 @@
              th:classappend="${#fields.hasErrors('tipo')} ? 'has-error'">
             <select th:field="*{tipo}">
                 <option value="" selected>seleccione tipo mascota</option>
-                <option th:each="tipo : ${T(es.danielpr.demo9fragmentos.entidades.TipoMascota).values()}"
+                <option th:each="tipo : ${T(es.carlosgs.demo.entidades.TipoMascota).values()}"
                          th:value="${tipo}" th:text="${tipo}"></option>
             </select>
             <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"
@@ -82,5 +82,6 @@
 </form>
 
 <th:block th:replace="fragmentos/js-final::jsfinal(~{})"></th:block>
+
 </body>
 </html>

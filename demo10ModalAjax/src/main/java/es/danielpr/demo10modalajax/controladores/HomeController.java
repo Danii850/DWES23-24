@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeController {
 
-    @GetMapping({"", "index"})
-    public String bienvenida(){
+    @GetMapping("")
+    public String bienvenida() {
         return "redirect:/mascota/list";
     }
+
 }

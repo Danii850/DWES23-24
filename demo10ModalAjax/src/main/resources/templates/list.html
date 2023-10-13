@@ -10,7 +10,7 @@
 
 <body>
 
-<nav th:replace="fragmentos/navbar::navbar"></nav>
+<nav th:replace="fragmentos/barrasup::barra-superior"></nav>
 
 <div class="container-fluid">
     <div class="card">
@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="mascota : ${listaMascotas}">
-                    <td th:text="${mascota.id}">ID</td>
+                    <td class="mascotaId" th:text="${mascota.id}">ID</td>
                     <td th:text="${mascota.nombre}">Nombre</td>
                     <td th:text="${mascota.fechaNacimiento}">Malu/td>
                     <td th:text="${mascota.numChip}">00000</td>
@@ -41,22 +41,27 @@
                     <td>
                         <a th:href="@{/mascota/edit/{id}(id=${mascota.id})}" aria-label="Editar">
                             <span class="fas fa-edit" aria-hidden="true"></span></a>
-                        <a href="#" th:onclick="|javascript:open_delete(${mascota.id})|" aria-label="Borrar">
+                        <!--
+                        <a href="#" data-bs-toggle="modal" th:data-bs-target="'#delete-modal_' + ${mascota.id}" aria-label="Borrar">
                             <span class="fas fa-trash" aria-hidden="true"></span></a>
+                        -->
+                        <a href="#" id="lnkBorrarMascota" aria-label="Borrar">
+                            <span class="fas fa-trash" aria-hidden="true"></span></a>
+
                     </td>
-                    <!-- div para el modal -->
-                    <div id="paraelmodal"></div>
                 </tr>
                 </tbody>
             </table>
-
+            <!-- div para el modal -->
+            <div id="paraelmodal"></div>
         </div>
     </div>
 </div>
 
 
-<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
-
-<th:block th:replace="fragmentos/js-final::jsfinal(~{})"></th:block>
+<th:block th:replace="fragmentos/js-final::jsfinal(~{::script})">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/js/mascot.js}"></script>
+</th:block>
 </body>
 </html>

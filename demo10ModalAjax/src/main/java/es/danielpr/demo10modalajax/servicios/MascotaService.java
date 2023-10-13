@@ -1,7 +1,7 @@
 package es.danielpr.demo10modalajax.servicios;
 
-import es.danielpr.demo10modalajax.entidades.TipoMascota;
 import es.danielpr.demo10modalajax.entidades.Mascota;
+import es.danielpr.demo10modalajax.entidades.TipoMascota;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
